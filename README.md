@@ -8,7 +8,7 @@ This is likely to be a duplicate effort, but I've written it so I thought why no
 
 ### Setup
 
-Python is required. Use `requirements.txt` to install Python dependency packages.
+Python is required. the `imgurpython` library requires Python >= 2.7. This software is tested with Python 3.6.0. Use `requirements.txt` to install Python dependency packages.
 
 ```
 pip install -r requirements.txt
@@ -34,3 +34,11 @@ client_secret = 1234abcd1234abcd1234abcd1234abcd1234abcd
 ```
 python upload.py /tmp/myimage.png
 ```
+
+## License
+
+This software is released under the General Public License, version 3 or later.
+
+This software is based on imgurpython by Imgur LLC, which is released under the MIT License.
+
+See `LICENSE.md`.

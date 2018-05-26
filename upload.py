@@ -38,4 +38,4 @@ if __name__ == "__main__":
     print('Chosen image: ' + sys.argv[1])
     image = upload_kitten(client, sys.argv[1])
 
-    print("You can find it here: {0}".format('https' + image['link'][4:]))
+    print("You can find it here: {0}".format(image['link']))

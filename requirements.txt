@@ -1,2 +1,2 @@
-imgurpython==1.1.7
-requests==2.13.0
+imgurpython
+requests

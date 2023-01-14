@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
-from imgurpython import ImgurClient
 from helpers import get_input, get_config
+from imgurpython import ImgurClient
+import json
 import os.path
+import subprocess
 import sys
 
 HOME = os.path.expanduser('~')
@@ -27,7 +29,6 @@ def upload_kitten(client, img_path):
     print("Uploading image... ")
     image = client.upload_from_path(img_path, anon=False)
     print("Done")
-    print()
 
     return image
 
@@ -37,5 +38,18 @@ if __name__ == "__main__":
     client = authenticate()
     print('Chosen image: ' + sys.argv[1])
     image = upload_kitten(client, sys.argv[1])
+    print(image)
 
-    print("You can find it here: {0}".format(image['link']))
+    url = image['link']
+
+    print(f'You can find it here: {url}')
+    p = subprocess.Popen(['xclip', '-sel', 'clip'], stdin=subprocess.PIPE)
+    p.stdin.write(url.encode('utf-8'))
+    p.stdin.close()
+    print('waiting for xclip to terminate...')
+    p.wait()
+
+    print('Saving to log...')
+    with open(HOME + '/.imgurup.log', 'a') as f:
+        log_data = json.dumps(image, separators=(',', ':'))
+        f.write(f'{log_data}\n')

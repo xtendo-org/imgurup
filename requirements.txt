@@ -1,2 +1,2 @@
 imgurpython
-requests
+requests>2.19
